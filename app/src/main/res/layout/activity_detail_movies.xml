@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail_movies.DetailMoviesActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".presentation.activities.MovieDetailsActivity">
+
+        <ImageView
+            android:id="@+id/img_poster"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="8dp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/bg_poster_movies" />
+
+        <ProgressBar
+            android:id="@+id/progressMovieDetails"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="100dp"
+            android:visibility="gone"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutTitleRatingRelease"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_poster">
+
+            <TextView
+                android:id="@+id/tv_title_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/title_label"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/textViewRating"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewRating"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/rating_label"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_title_label"
+                app:layout_constraintEnd_toStartOf="@+id/textViewReleaseDate"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_title_label" />
+
+            <TextView
+                android:id="@+id/textViewReleaseDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/release_date"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewRating"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewRating"
+                app:layout_constraintTop_toTopOf="@+id/textViewRating" />
+
+            <TextView
+                android:id="@+id/tv_title_movies"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="@{viewModel.movieDetails.title}"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_title_label"
+                app:layout_constraintStart_toStartOf="@+id/tv_title_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_label"
+                tools:text="KHNPH" />
+
+            <TextView
+                android:id="@+id/tv_rating_values"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_title_movies"
+                app:layout_constraintEnd_toEndOf="@+id/textViewRating"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_title_movies"
+                tools:text="9.2" />
+
+            <TextView
+                android:id="@+id/tv_release_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_rating_values"
+                app:layout_constraintEnd_toEndOf="@+id/textViewReleaseDate"
+                app:layout_constraintStart_toEndOf="@+id/textViewRating"
+                app:layout_constraintTop_toTopOf="@+id/tv_rating_values"
+                tools:text="21st march 1990" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textViewSynopsis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:gravity="center_horizontal|start"
+            android:textStyle="bold"
+            android:layout_marginStart="8dp"
+            android:text="@string/overview_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutTitleRatingRelease" />
+
+        <TextView
+            android:id="@+id/tv_overview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_margin="8dp"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewSynopsis" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
